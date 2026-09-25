@@ -1,0 +1,12 @@
+# XAMPP logs & tijdelijke bestanden
+/xampp/
+*.log
+/uploads/tmp/
+
+# Lokale configuraties met wachtwoorden/gevoelige data
+config.local.php
+.env
+
+# Besturingssysteem bestanden
+.DS_Store
+Thumbs.db
