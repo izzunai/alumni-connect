@@ -1,0 +1,28 @@
+name: CI Pipeline
+
+# Voer de workflow uit bij elke push of pull request naar de main branch
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Haal de code op uit de repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Stel PHP in op de linter-omgeving
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      # 3. Voer een PHP Syntax Check (Linting) uit op alle .php bestanden
+      - name: Check PHP Syntax
+        run: |
+          find . -name "*.php" -not -path "./vendor/*" -exec php -l {} \;
